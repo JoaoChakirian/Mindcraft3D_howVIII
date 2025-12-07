@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>AppNavigation.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AppNavigation.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">mindcraft3d</span>
+
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">Image</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">clickable</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">Icons</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">Clear</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">Person</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">Search</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">ShoppingCart</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material3</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">runtime</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Alignment</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Modifier</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Color</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">res</span><span class="s2">.</span><span class="s1">painterResource</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">unit</span><span class="s2">.</span><span class="s1">dp</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">lifecycle</span><span class="s2">.</span><span class="s1">viewmodel</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">viewModel</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">NavHostController</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">NavType</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">NavHost</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">composable</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">currentBackStackEntryAsState</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">rememberNavController</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">navArgument</span>
+
+<span class="s1">@OptIn</span><span class="s2">(</span><span class="s1">ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s2">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">AppNavigation</span><span class="s2">() {</span>
+    <span class="s0">val </span><span class="s1">navController </span><span class="s2">= </span><span class="s1">rememberNavController</span><span class="s2">()</span>
+    <span class="s0">val </span><span class="s1">shoppingCartViewModel: ShoppingCartViewModel </span><span class="s2">= </span><span class="s1">viewModel</span><span class="s2">()</span>
+    <span class="s0">var </span><span class="s1">searchQuery by remember </span><span class="s2">{ </span><span class="s1">mutableStateOf</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">) }</span>
+    <span class="s0">var </span><span class="s1">searchActive by remember </span><span class="s2">{ </span><span class="s1">mutableStateOf</span><span class="s2">(</span><span class="s0">false</span><span class="s2">) }</span>
+    <span class="s0">val </span><span class="s1">navBackStackEntry by navController</span><span class="s2">.</span><span class="s1">currentBackStackEntryAsState</span><span class="s2">()</span>
+    <span class="s0">val </span><span class="s1">currentRoute </span><span class="s2">= </span><span class="s1">navBackStackEntry?</span><span class="s2">.</span><span class="s1">destination?</span><span class="s2">.</span><span class="s1">route</span>
+
+    <span class="s1">Scaffold</span><span class="s2">(</span>
+        <span class="s1">topBar </span><span class="s2">= {</span>
+            <span class="s1">TopAppBar</span><span class="s2">(</span>
+                <span class="s1">title </span><span class="s2">= {</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">searchActive </span><span class="s2">&amp;&amp; </span><span class="s1">currentRoute </span><span class="s2">== </span><span class="s3">&quot;productList&quot;</span><span class="s2">) {</span>
+                        <span class="s1">TextField</span><span class="s2">(</span>
+                            <span class="s1">value </span><span class="s2">= </span><span class="s1">searchQuery</span><span class="s2">,</span>
+                            <span class="s1">onValueChange </span><span class="s2">= { </span><span class="s1">searchQuery </span><span class="s2">= </span><span class="s1">it </span><span class="s2">},</span>
+                            <span class="s1">placeholder </span><span class="s2">= { </span><span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Pesquisar...&quot;</span><span class="s2">) },</span>
+                            <span class="s1">singleLine </span><span class="s2">= </span><span class="s0">true</span><span class="s2">,</span>
+                            <span class="s1">colors </span><span class="s2">= </span><span class="s1">TextFieldDefaults</span><span class="s2">.</span><span class="s1">colors</span><span class="s2">(</span>
+                                <span class="s1">focusedContainerColor </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                                <span class="s1">unfocusedContainerColor </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                                <span class="s1">disabledContainerColor </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                                <span class="s1">focusedIndicatorColor </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                                <span class="s1">unfocusedIndicatorColor </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                                <span class="s1">disabledIndicatorColor </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                            <span class="s2">),</span>
+                        <span class="s2">)</span>
+                    <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                        <span class="s1">Row</span><span class="s2">(</span>
+                            <span class="s1">verticalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterVertically</span><span class="s2">,</span>
+                            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">clickable </span><span class="s2">{</span>
+                                <span class="s1">navController</span><span class="s2">.</span><span class="s1">navigate</span><span class="s2">(</span><span class="s3">&quot;productList&quot;</span><span class="s2">) {</span>
+                                    <span class="s1">popUpTo</span><span class="s2">(</span><span class="s3">&quot;productList&quot;</span><span class="s2">) { </span><span class="s1">inclusive </span><span class="s2">= </span><span class="s0">true </span><span class="s2">}</span>
+                                    <span class="s1">launchSingleTop </span><span class="s2">= </span><span class="s0">true</span>
+                                <span class="s2">}</span>
+                            <span class="s2">}</span>
+                        <span class="s2">) {</span>
+                            <span class="s1">Image</span><span class="s2">(</span>
+                                <span class="s1">painter </span><span class="s2">= </span><span class="s1">painterResource</span><span class="s2">(</span><span class="s1">id </span><span class="s2">= </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">mindcraft_logo</span><span class="s2">),</span>
+                                <span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;MindCraft3D Logo&quot;</span><span class="s2">,</span>
+                                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s4">32</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                            <span class="s2">)</span>
+                            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                            <span class="s1">Text</span><span class="s2">(</span>
+                                <span class="s3">&quot;MindCraft3D&quot;</span><span class="s2">,</span>
+                                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleLarge</span><span class="s2">,</span>
+                                <span class="s1">color </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">0xFF6174CB</span><span class="s2">)</span>
+                            <span class="s2">)</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+                <span class="s2">},</span>
+                <span class="s1">actions </span><span class="s2">= {</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">currentRoute </span><span class="s2">== </span><span class="s3">&quot;productList&quot;</span><span class="s2">) {</span>
+                        <span class="s0">if </span><span class="s2">(</span><span class="s1">searchActive</span><span class="s2">) {</span>
+                            <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= {</span>
+                                <span class="s1">searchActive </span><span class="s2">= </span><span class="s0">false</span>
+                                <span class="s1">searchQuery </span><span class="s2">= </span><span class="s3">&quot;&quot;</span>
+                            <span class="s2">}) {</span>
+                                <span class="s1">Icon</span><span class="s2">(</span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">Clear</span><span class="s2">, </span><span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Fechar Pesquisa&quot;</span><span class="s2">)</span>
+                            <span class="s2">}</span>
+                        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                            <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">searchActive </span><span class="s2">= </span><span class="s0">true </span><span class="s2">}) {</span>
+                                <span class="s1">Icon</span><span class="s2">(</span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">Search</span><span class="s2">, </span><span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Abrir Pesquisa&quot;</span><span class="s2">)</span>
+                            <span class="s2">}</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+
+                    <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">navController</span><span class="s2">.</span><span class="s1">navigate</span><span class="s2">(</span><span class="s3">&quot;shoppingCart&quot;</span><span class="s2">) }) {</span>
+                        <span class="s1">Icon</span><span class="s2">(</span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">ShoppingCart</span><span class="s2">, </span><span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Carrinho de Compras&quot;</span><span class="s2">)</span>
+                    <span class="s2">}</span>
+
+                    <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">navController</span><span class="s2">.</span><span class="s1">navigate</span><span class="s2">(</span><span class="s3">&quot;auth&quot;</span><span class="s2">) }) {</span>
+                        <span class="s1">Icon</span><span class="s2">(</span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">Person</span><span class="s2">, </span><span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Login ou Criar Conta&quot;</span><span class="s2">)</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+    <span class="s2">) { </span><span class="s1">innerPadding </span><span class="s2">-&gt;</span>
+        <span class="s1">NavHost</span><span class="s2">(</span>
+            <span class="s1">navController </span><span class="s2">= </span><span class="s1">navController</span><span class="s2">,</span>
+            <span class="s1">startDestination </span><span class="s2">= </span><span class="s3">&quot;productList&quot;</span><span class="s2">,</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">innerPadding</span><span class="s2">)</span>
+        <span class="s2">) {</span>
+            <span class="s1">composable</span><span class="s2">(</span><span class="s3">&quot;productList&quot;</span><span class="s2">) {</span>
+                <span class="s0">val </span><span class="s1">filteredProducts </span><span class="s2">= </span><span class="s1">sampleProducts</span><span class="s2">.</span><span class="s1">filter </span><span class="s2">{</span>
+                    <span class="s1">it</span><span class="s2">.</span><span class="s1">name</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">searchQuery</span><span class="s2">, </span><span class="s1">ignoreCase </span><span class="s2">= </span><span class="s0">true</span><span class="s2">) ||</span>
+                            <span class="s1">it</span><span class="s2">.</span><span class="s1">description</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">searchQuery</span><span class="s2">, </span><span class="s1">ignoreCase </span><span class="s2">= </span><span class="s0">true</span><span class="s2">)</span>
+                <span class="s2">}</span>
+                <span class="s1">ProductList</span><span class="s2">(</span><span class="s1">products </span><span class="s2">= </span><span class="s1">filteredProducts</span><span class="s2">, </span><span class="s1">onProductClick </span><span class="s2">= { </span><span class="s1">product </span><span class="s2">-&gt;</span>
+                    <span class="s1">navController</span><span class="s2">.</span><span class="s1">navigate</span><span class="s2">(</span><span class="s3">&quot;productDetail/</span><span class="s0">${</span><span class="s1">product</span><span class="s2">.</span><span class="s1">id</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+                <span class="s2">})</span>
+            <span class="s2">}</span>
+            <span class="s1">composable</span><span class="s2">(</span>
+                <span class="s1">route </span><span class="s2">= </span><span class="s3">&quot;productDetail/{productId}&quot;</span><span class="s2">,</span>
+                <span class="s1">arguments </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">navArgument</span><span class="s2">(</span><span class="s3">&quot;productId&quot;</span><span class="s2">) { </span><span class="s1">type </span><span class="s2">= </span><span class="s1">NavType</span><span class="s2">.</span><span class="s1">IntType </span><span class="s2">})</span>
+            <span class="s2">) { </span><span class="s1">backStackEntry </span><span class="s2">-&gt;</span>
+                <span class="s0">val </span><span class="s1">productId </span><span class="s2">= </span><span class="s1">backStackEntry</span><span class="s2">.</span><span class="s1">arguments?</span><span class="s2">.</span><span class="s1">getInt</span><span class="s2">(</span><span class="s3">&quot;productId&quot;</span><span class="s2">)</span>
+                <span class="s0">val </span><span class="s1">product </span><span class="s2">= </span><span class="s1">sampleProducts</span><span class="s2">.</span><span class="s1">find </span><span class="s2">{ </span><span class="s1">it</span><span class="s2">.</span><span class="s1">id </span><span class="s2">== </span><span class="s1">productId </span><span class="s2">}</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">product </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+                    <span class="s1">ProductDetailScreen</span><span class="s2">(</span><span class="s1">product </span><span class="s2">= </span><span class="s1">product</span><span class="s2">, </span><span class="s1">onAddToCart </span><span class="s2">= {</span>
+                        <span class="s1">shoppingCartViewModel</span><span class="s2">.</span><span class="s1">addToCart</span><span class="s2">(</span><span class="s1">product</span><span class="s2">)</span>
+                    <span class="s2">})</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+            <span class="s1">composable</span><span class="s2">(</span><span class="s3">&quot;shoppingCart&quot;</span><span class="s2">) {</span>
+                <span class="s0">val </span><span class="s1">cartItems by shoppingCartViewModel</span><span class="s2">.</span><span class="s1">cartItems</span><span class="s2">.</span><span class="s1">collectAsState</span><span class="s2">()</span>
+                <span class="s1">ShoppingCartScreen</span><span class="s2">(</span>
+                    <span class="s1">cartItems </span><span class="s2">= </span><span class="s1">cartItems</span><span class="s2">,</span>
+                    <span class="s1">onRemoveFromCart </span><span class="s2">= { </span><span class="s1">product </span><span class="s2">-&gt;</span>
+                        <span class="s1">shoppingCartViewModel</span><span class="s2">.</span><span class="s1">removeFromCart</span><span class="s2">(</span><span class="s1">product</span><span class="s2">)</span>
+                    <span class="s2">},</span>
+                    <span class="s1">onClearCart </span><span class="s2">= { </span><span class="s1">shoppingCartViewModel</span><span class="s2">.</span><span class="s1">clearCart</span><span class="s2">() }</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+            <span class="s1">composable</span><span class="s2">(</span><span class="s3">&quot;auth&quot;</span><span class="s2">) {</span>
+                <span class="s1">AuthScreen</span><span class="s2">(</span><span class="s1">onAuthComplete </span><span class="s2">= {</span>
+                    <span class="s5">// Lógica após o login/criação</span>
+                    <span class="s1">navController</span><span class="s2">.</span><span class="s1">popBackStack</span><span class="s2">()</span>
+                <span class="s2">})</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

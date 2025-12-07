@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">mindcraft3d</span>
+
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">ComponentActivity</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">setContent</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">annotation</span><span class="s2">.</span><span class="s1">DrawableRes</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">Image</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">background</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">LazyRow</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">grid</span><span class="s2">.</span><span class="s1">GridCells</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">grid</span><span class="s2">.</span><span class="s1">GridItemSpan</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">grid</span><span class="s2">.</span><span class="s1">LazyVerticalGrid</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">grid</span><span class="s2">.</span><span class="s1">items</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">items</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material3</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">runtime</span><span class="s2">.</span><span class="s1">Composable</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Alignment</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Modifier</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Brush</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Color</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">ContentScale</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">res</span><span class="s2">.</span><span class="s1">painterResource</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">font</span><span class="s2">.</span><span class="s1">FontWeight</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">tooling</span><span class="s2">.</span><span class="s1">preview</span><span class="s2">.</span><span class="s1">Preview</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">unit</span><span class="s2">.</span><span class="s1">dp</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">mindcraft3d</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">theme</span><span class="s2">.</span><span class="s1">Mindcraft3DTheme</span>
+
+<span class="s1">data </span><span class="s0">class </span><span class="s1">Product</span><span class="s2">(</span>
+    <span class="s0">val </span><span class="s1">id: Int</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">name: String</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">description: String</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">price: Double</span><span class="s2">,</span>
+    <span class="s1">@DrawableRes </span><span class="s0">val </span><span class="s1">imageRes: List</span><span class="s2">&lt;</span><span class="s1">Int</span><span class="s2">&gt;,</span>
+    <span class="s0">val </span><span class="s1">isFeatured: Boolean </span><span class="s2">= </span><span class="s0">false</span>
+<span class="s2">)</span>
+
+<span class="s3">// Lembre-se de adicionar suas imagens na pasta res/drawable</span>
+<span class="s0">val </span><span class="s1">sampleProducts </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">1</span><span class="s2">, </span><span class="s5">&quot;Kit Vasos Decorativos Espiral&quot;</span><span class="s2">, </span><span class="s5">&quot;Um vaso elegante para suas plantas&quot;</span><span class="s2">, </span><span class="s4">49.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">vasoa</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">vasob</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">vasoc</span><span class="s2">), </span><span class="s1">isFeatured </span><span class="s2">= </span><span class="s0">true</span><span class="s2">),</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">2</span><span class="s2">, </span><span class="s5">&quot;Tie Fighter Star Wars Kit Cartão&quot;</span><span class="s2">, </span><span class="s5">&quot;Modelo Colecionavel de Star Wars com tie fighter  &quot;</span><span class="s2">, </span><span class="s4">20.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">star_a</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">star_b</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">star_c</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">star_d</span><span class="s2">)),</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">3</span><span class="s2">, </span><span class="s5">&quot;Chaveiro de Capivara&quot;</span><span class="s2">, </span><span class="s5">&quot;Um chaveiro de Capivara&quot;</span><span class="s2">, </span><span class="s4">10.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">cap_a</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">cap_b</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">cap_c</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">cap_d</span><span class="s2">), </span><span class="s1">isFeatured </span><span class="s2">= </span><span class="s0">true</span><span class="s2">),</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">4</span><span class="s2">, </span><span class="s5">&quot;Miniaturas Pokémon Eevee e Evoluções&quot;</span><span class="s2">, </span><span class="s5">&quot;Uma coleção de miniaturas Pokémon&quot;</span><span class="s2">, </span><span class="s4">35.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">pokemon_a</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">pokemon_b</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">pokemon_c</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">pokemon_d</span><span class="s2">)),</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">5</span><span class="s2">, </span><span class="s5">&quot;Deck Box TGC Game Boy&quot;</span><span class="s2">, </span><span class="s5">&quot;Deck Box para guardar suas cartas de Pokémon&quot;</span><span class="s2">, </span><span class="s4">65.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">deck_a</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">deck_b</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">deck_c</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">deck_d</span><span class="s2">)),</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">6</span><span class="s2">, </span><span class="s5">&quot;Deck Box MTG Red Dragon&quot;</span><span class="s2">, </span><span class="s5">&quot;Deck Box para guardar suas cartas de Magic&quot;</span><span class="s2">, </span><span class="s4">65.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">red_a</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">red_b</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">red_c</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">red_d</span><span class="s2">,</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">red_e</span><span class="s2">), </span><span class="s1">isFeatured </span><span class="s2">= </span><span class="s0">true</span><span class="s2">),</span>
+    <span class="s1">Product</span><span class="s2">(</span><span class="s4">7</span><span class="s2">, </span><span class="s5">&quot;Suporte Bob Esponja Decoração&quot;</span><span class="s2">, </span><span class="s5">&quot;Suporte para sua Esponja de limpeza&quot;</span><span class="s2">, </span><span class="s4">20.00</span><span class="s2">, </span><span class="s1">listOf</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">bob_a</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">bob_b</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">bob_c</span><span class="s2">, </span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">bob_d</span><span class="s2">)),</span>
+    <span class="s2">)</span>
+<span class="s0">class </span><span class="s1">MainActivity : ComponentActivity</span><span class="s2">() {</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">)</span>
+        <span class="s1">setContent </span><span class="s2">{</span>
+            <span class="s1">Mindcraft3DTheme </span><span class="s2">{</span>
+                <span class="s1">AppNavigation</span><span class="s2">()</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@OptIn</span><span class="s2">(</span><span class="s1">ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s2">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">FeaturedProductCard</span><span class="s2">(</span><span class="s1">product: Product</span><span class="s2">, </span><span class="s1">onClick: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span><span class="s2">, </span><span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">) {</span>
+    <span class="s1">Card</span><span class="s2">(</span>
+        <span class="s1">onClick </span><span class="s2">= </span><span class="s1">onClick</span><span class="s2">,</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s4">180</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+    <span class="s2">) {</span>
+        <span class="s1">Column </span><span class="s2">{</span>
+            <span class="s1">Image</span><span class="s2">(</span>
+                <span class="s1">painter </span><span class="s2">= </span><span class="s1">painterResource</span><span class="s2">(</span><span class="s1">id </span><span class="s2">= </span><span class="s1">product</span><span class="s2">.</span><span class="s1">imageRes</span><span class="s2">.</span><span class="s1">first</span><span class="s2">()),</span>
+                <span class="s1">contentDescription </span><span class="s2">= </span><span class="s1">product</span><span class="s2">.</span><span class="s1">name</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                    <span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                    <span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s4">120</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                <span class="s1">contentScale </span><span class="s2">= </span><span class="s1">ContentScale</span><span class="s2">.</span><span class="s1">Crop</span>
+            <span class="s2">)</span>
+            <span class="s1">Column</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s4">12</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)) {</span>
+                <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s1">product</span><span class="s2">.</span><span class="s1">name</span><span class="s2">, </span><span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">, </span><span class="s1">maxLines </span><span class="s2">= </span><span class="s4">1</span><span class="s2">, </span><span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">)</span>
+                <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s5">&quot;R$ </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s5">&quot;%.2f&quot;</span><span class="s2">, </span><span class="s1">product</span><span class="s2">.</span><span class="s1">price</span><span class="s2">)</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s2">, </span><span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">, </span><span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">)</span>
+                <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s5">&quot;em 5x de R$ </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s5">&quot;%.2f&quot;</span><span class="s2">, </span><span class="s1">product</span><span class="s2">.</span><span class="s1">price </span><span class="s2">/ </span><span class="s4">5</span><span class="s2">)</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s2">, </span><span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodySmall</span><span class="s2">)</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@OptIn</span><span class="s2">(</span><span class="s1">ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s2">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">ProductCard</span><span class="s2">(</span><span class="s1">product: Product</span><span class="s2">, </span><span class="s1">onClick: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span><span class="s2">, </span><span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">) {</span>
+    <span class="s1">Card</span><span class="s2">(</span>
+        <span class="s1">onClick </span><span class="s2">= </span><span class="s1">onClick</span><span class="s2">,</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+        <span class="s1">elevation </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardElevation</span><span class="s2">(</span><span class="s1">defaultElevation </span><span class="s2">= </span><span class="s4">2</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+    <span class="s2">) {</span>
+        <span class="s1">Column </span><span class="s2">{</span>
+            <span class="s1">Image</span><span class="s2">(</span>
+                <span class="s1">painter </span><span class="s2">= </span><span class="s1">painterResource</span><span class="s2">(</span><span class="s1">id </span><span class="s2">= </span><span class="s1">product</span><span class="s2">.</span><span class="s1">imageRes</span><span class="s2">.</span><span class="s1">first</span><span class="s2">()),</span>
+                <span class="s1">contentDescription </span><span class="s2">= </span><span class="s1">product</span><span class="s2">.</span><span class="s1">name</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                    <span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                    <span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s4">150</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                <span class="s1">contentScale </span><span class="s2">= </span><span class="s1">ContentScale</span><span class="s2">.</span><span class="s1">Crop</span>
+            <span class="s2">)</span>
+            <span class="s1">Column</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s4">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)) {</span>
+                <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s1">product</span><span class="s2">.</span><span class="s1">name</span><span class="s2">, </span><span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleSmall</span><span class="s2">, </span><span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">, </span><span class="s1">maxLines </span><span class="s2">= </span><span class="s4">2</span><span class="s2">)</span>
+                <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s5">&quot;R$ </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s5">&quot;%.2f&quot;</span><span class="s2">, </span><span class="s1">product</span><span class="s2">.</span><span class="s1">price</span><span class="s2">)</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s2">, </span><span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">, </span><span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">)</span>
+                <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s5">&quot;em 5x de R$ </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s5">&quot;%.2f&quot;</span><span class="s2">, </span><span class="s1">product</span><span class="s2">.</span><span class="s1">price </span><span class="s2">/ </span><span class="s4">5</span><span class="s2">)</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s2">, </span><span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodySmall</span><span class="s2">)</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">ProductList</span><span class="s2">(</span><span class="s1">products: List</span><span class="s2">&lt;</span><span class="s1">Product</span><span class="s2">&gt;, </span><span class="s1">onProductClick: </span><span class="s2">(</span><span class="s1">Product</span><span class="s2">) -&gt; </span><span class="s1">Unit</span><span class="s2">, </span><span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">) {</span>
+    <span class="s0">val </span><span class="s1">featuredProducts </span><span class="s2">= </span><span class="s1">products</span><span class="s2">.</span><span class="s1">filter </span><span class="s2">{ </span><span class="s1">it</span><span class="s2">.</span><span class="s1">isFeatured </span><span class="s2">}</span>
+    <span class="s0">val </span><span class="s1">regularProducts </span><span class="s2">= </span><span class="s1">products</span><span class="s2">.</span><span class="s1">filter </span><span class="s2">{ !</span><span class="s1">it</span><span class="s2">.</span><span class="s1">isFeatured </span><span class="s2">}</span>
+
+    <span class="s1">LazyVerticalGrid</span><span class="s2">(</span>
+        <span class="s1">columns </span><span class="s2">= </span><span class="s1">GridCells</span><span class="s2">.</span><span class="s1">Fixed</span><span class="s2">(</span><span class="s4">2</span><span class="s2">),</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span><span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">(),</span>
+        <span class="s1">contentPadding </span><span class="s2">= </span><span class="s1">PaddingValues</span><span class="s2">(</span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+    <span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">featuredProducts</span><span class="s2">.</span><span class="s1">isNotEmpty</span><span class="s2">()) {</span>
+            <span class="s1">item</span><span class="s2">(</span><span class="s1">span </span><span class="s2">= { </span><span class="s1">GridItemSpan</span><span class="s2">(</span><span class="s1">maxLineSpan</span><span class="s2">) }) {</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s5">&quot;Destaques&quot;</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleLarge</span><span class="s2">,</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">start </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">, </span><span class="s1">top </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">, </span><span class="s1">end </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">, </span><span class="s1">bottom </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+            <span class="s1">item</span><span class="s2">(</span><span class="s1">span </span><span class="s2">= { </span><span class="s1">GridItemSpan</span><span class="s2">(</span><span class="s1">maxLineSpan</span><span class="s2">) }) {</span>
+                <span class="s1">Box </span><span class="s2">{</span>
+                    <span class="s1">LazyRow</span><span class="s2">(</span>
+                        <span class="s1">contentPadding </span><span class="s2">= </span><span class="s1">PaddingValues</span><span class="s2">(</span><span class="s1">horizontal </span><span class="s2">= </span><span class="s4">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                        <span class="s1">horizontalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">spacedBy</span><span class="s2">(</span><span class="s4">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">) {</span>
+                        <span class="s1">items</span><span class="s2">(</span><span class="s1">featuredProducts</span><span class="s2">) { </span><span class="s1">product </span><span class="s2">-&gt;</span>
+                            <span class="s1">FeaturedProductCard</span><span class="s2">(</span><span class="s1">product </span><span class="s2">= </span><span class="s1">product</span><span class="s2">, </span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">onProductClick</span><span class="s2">(</span><span class="s1">product</span><span class="s2">) })</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+                    <span class="s1">Box</span><span class="s2">(</span>
+                        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                            <span class="s2">.</span><span class="s1">align</span><span class="s2">(</span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterEnd</span><span class="s2">)</span>
+                            <span class="s2">.</span><span class="s1">fillMaxHeight</span><span class="s2">()</span>
+                            <span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s4">50</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                            <span class="s2">.</span><span class="s1">background</span><span class="s2">(</span>
+                                <span class="s1">brush </span><span class="s2">= </span><span class="s1">Brush</span><span class="s2">.</span><span class="s1">horizontalGradient</span><span class="s2">(</span>
+                                    <span class="s1">colors </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span>
+                                        <span class="s1">Color</span><span class="s2">.</span><span class="s1">Transparent</span><span class="s2">,</span>
+                                        <span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">background </span><span class="s3">// Corrigido para a cor de fundo</span>
+                                    <span class="s2">),</span>
+                                    <span class="s1">startX </span><span class="s2">= </span><span class="s4">0f</span>
+                                <span class="s2">)</span>
+                            <span class="s2">)</span>
+                    <span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">regularProducts</span><span class="s2">.</span><span class="s1">isNotEmpty</span><span class="s2">()) {</span>
+            <span class="s1">item</span><span class="s2">(</span><span class="s1">span </span><span class="s2">= { </span><span class="s1">GridItemSpan</span><span class="s2">(</span><span class="s1">maxLineSpan</span><span class="s2">) }) {</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s5">&quot;Todos os Produtos&quot;</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleLarge</span><span class="s2">,</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">start </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">, </span><span class="s1">top </span><span class="s2">= </span><span class="s4">24</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">, </span><span class="s1">end </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">, </span><span class="s1">bottom </span><span class="s2">= </span><span class="s4">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+            <span class="s1">items</span><span class="s2">(</span><span class="s1">regularProducts</span><span class="s2">) { </span><span class="s1">product </span><span class="s2">-&gt;</span>
+                <span class="s1">ProductCard</span><span class="s2">(</span><span class="s1">product </span><span class="s2">= </span><span class="s1">product</span><span class="s2">, </span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">onProductClick</span><span class="s2">(</span><span class="s1">product</span><span class="s2">) })</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Preview</span><span class="s2">(</span><span class="s1">showBackground </span><span class="s2">= </span><span class="s0">true</span><span class="s2">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">ProductListPreview</span><span class="s2">() {</span>
+    <span class="s1">Mindcraft3DTheme </span><span class="s2">{</span>
+        <span class="s1">ProductList</span><span class="s2">(</span><span class="s1">products </span><span class="s2">= </span><span class="s1">sampleProducts</span><span class="s2">, </span><span class="s1">onProductClick </span><span class="s2">= {})</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
